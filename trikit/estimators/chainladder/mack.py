@@ -272,10 +272,11 @@ class MackChainLadder(BaseChainLadder):
         if self._mod_tri is None:
             self._mod_tri = self.tri.copy(deep=True)
             for ii in range(self.tri.latest.shape[0]):
-                r_indx = self.tri.latest.loc[ii, "origin"].item()
-                c_indx = self.tri.latest.loc[ii, "dev"].item()
-                self._mod_tri.at[r_indx, c_indx] = np.NaN
+                r_indx = self.tri.latest.loc[ii, "origin"]
+                c_indx = self.tri.latest.loc[ii, "dev"]
+                self._mod_tri.loc[r_indx, c_indx] = np.NaN
             self._mod_tri = self._mod_tri.dropna(axis=0, how="all").dropna(axis=1, how="all")
+            
         return(self._mod_tri)
 
 

@@ -453,7 +453,7 @@ class BaseChainLadderResult:
         # Add origin index column sort origin columns, which is of type object
         # # since adding "total".
         dfall["dev"] = dfall["dev"].astype(np.int)
-        origin_vals = sorted([int(ii) for ii in dfall["origin"].unique() if ii!="total"])
+        origin_vals = sorted([ii for ii in dfall["origin"].unique() if ii!="total"])
         dindex = {jj:ii for ii,jj in enumerate(origin_vals)}
         dindex.update({"total":max(dindex.values())+1})
         dfall["origin_index"] = dfall["origin"].map(dindex)
